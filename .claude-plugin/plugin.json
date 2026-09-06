@@ -11,5 +11,7 @@
     "skills",
     "productivity"
   ],
-  "skills": []
+  "skills": [
+    "./skills/walk-me-through"
+  ]
 }
