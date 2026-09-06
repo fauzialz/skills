@@ -1,0 +1,19 @@
+{
+  "name": "fauzialz",
+  "owner": {
+    "name": "Fauzi Al Aziz"
+  },
+  "description": "Fauzi's personal Claude Code skills, as an installable plugin.",
+  "plugins": [
+    {
+      "name": "fauzialz-skills",
+      "source": "./",
+      "description": "Fauzi's personal Claude Code skills.",
+      "category": "productivity",
+      "keywords": [
+        "skills",
+        "productivity"
+      ]
+    }
+  ]
+}

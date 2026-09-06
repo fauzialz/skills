@@ -1,0 +1,15 @@
+{
+  "name": "fauzialz-skills",
+  "version": "0.1.0",
+  "description": "Fauzi's personal Claude Code skills.",
+  "author": {
+    "name": "Fauzi Al Aziz"
+  },
+  "repository": "https://github.com/fauzialz/skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "productivity"
+  ],
+  "skills": []
+}
