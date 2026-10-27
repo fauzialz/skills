@@ -21,8 +21,8 @@ Plugin (recommended — tracks updates to this repo):
 No-plugin route: copy a skill folder straight in.
 
 ```
-cp -r skills/walk-me-through ~/.claude/skills/walk-me-through   # personal, all projects
-cp -r skills/walk-me-through .claude/skills/walk-me-through     # this project only
+cp -r skills/<skill> ~/.claude/skills/<skill>   # personal, all projects
+cp -r skills/<skill> .claude/skills/<skill>     # this project only
 ```
 
 Docs: [code.claude.com/docs/en/skills](https://code.claude.com/docs/en/skills)
@@ -32,8 +32,8 @@ Docs: [code.claude.com/docs/en/skills](https://code.claude.com/docs/en/skills)
 Same Agent Skills format — drop the folder in as-is, no reformatting:
 
 ```
-cp -r skills/walk-me-through ~/.gemini/skills/walk-me-through   # or ~/.agents/skills/
-cp -r skills/walk-me-through .gemini/skills/walk-me-through     # or .agents/skills/
+cp -r skills/<skill> ~/.gemini/skills/<skill>   # or ~/.agents/skills/
+cp -r skills/<skill> .gemini/skills/<skill>     # or .agents/skills/
 ```
 
 Docs: [geminicli.com/docs/cli/skills](https://geminicli.com/docs/cli/skills/)
@@ -51,7 +51,7 @@ frontmatter is ignored). Copy the skill's body into a new `.mdc` file:
 
 ```
 mkdir -p .cursor/rules
-cp skills/walk-me-through/SKILL.md .cursor/rules/walk-me-through.mdc
+cp skills/<skill>/SKILL.md .cursor/rules/<skill>.mdc
 # then add/adjust the frontmatter to Cursor's format
 ```
 
@@ -64,7 +64,7 @@ file globs):
 
 ```
 mkdir -p .github/instructions
-cp skills/walk-me-through/SKILL.md .github/instructions/walk-me-through.instructions.md
+cp skills/<skill>/SKILL.md .github/instructions/<skill>.instructions.md
 ```
 
 Or merge everything into the single repo-wide `.github/copilot-instructions.md` if you'd
@@ -76,7 +76,7 @@ Docs: [docs.github.com — add repository instructions](https://docs.github.com/
 
 ```
 mkdir -p .windsurf/rules
-cp skills/walk-me-through/SKILL.md .windsurf/rules/walk-me-through.md
+cp skills/<skill>/SKILL.md .windsurf/rules/<skill>.md
 ```
 
 (Legacy single-file `.windsurfrules` is still read if you prefer that instead.)
@@ -87,7 +87,7 @@ Docs: [windsurf.com/editor/directory](https://windsurf.com/editor/directory)
 
 ```
 mkdir -p .clinerules
-cp skills/walk-me-through/SKILL.md .clinerules/walk-me-through.md
+cp skills/<skill>/SKILL.md .clinerules/<skill>.md
 ```
 
 Docs: [cline.bot — .clinerules](https://cline.bot/blog/clinerules-version-controlled-shareable-and-ai-editable-instructions)
@@ -98,7 +98,7 @@ Reference the file as a rule in `config.yaml`, or copy it under `.continue/rules
 
 ```yaml
 rules:
-  - skills/walk-me-through/SKILL.md
+  - skills/<skill>/SKILL.md
 ```
 
 Docs: [docs.continue.dev/customize/deep-dives/rules](https://docs.continue.dev/customize/deep-dives/rules)
@@ -108,7 +108,7 @@ Docs: [docs.continue.dev/customize/deep-dives/rules](https://docs.continue.dev/c
 Aider takes one merged conventions file rather than separate per-skill files:
 
 ```
-cat skills/walk-me-through/SKILL.md >> CONVENTIONS.md
+cat skills/<skill>/SKILL.md >> CONVENTIONS.md
 aider --read CONVENTIONS.md
 ```
 
@@ -121,7 +121,7 @@ widest-supported fallback (read by Codex, Cursor, Copilot, Windsurf, Aider, and 
 It's one merged file, not a per-skill split, so append what you need:
 
 ```
-cat skills/walk-me-through/SKILL.md >> AGENTS.md
+cat skills/<skill>/SKILL.md >> AGENTS.md
 ```
 
 Docs: [agents.md](https://agents.md)
@@ -131,6 +131,14 @@ Docs: [agents.md](https://agents.md)
 - **walk-me-through** — paced, conversational walkthrough of a pasted source (URL, text,
   or file), explained concept-by-concept in plain language, with optional related-topic
   tangents along the way.
-- **ship-feature** — manual-only. Commits by context and Jira ticket, pushes, opens a PR from
-  the repo template, syncs a `-release` twin branch via cherry-pick, and moves the ticket
-  to a testing status.
+- **ship-feature** — manual-only (`/ship-feature`). Takes finished feature work to
+  ready-to-test in one pass:
+  - commits uncommitted changes, grouped by context and Jira ticket, in the repo's commit style
+  - pushes, then opens a PR from the repo's PR template with the ticket link, written
+    short and plain for easy reading
+  - keeps a `<feature>-release` twin branch in sync by cherry-picking the feature's commits,
+    so the feature can ship alone with one PR
+  - moves the Jira ticket to a testing status, walking through intermediate statuses if needed
+
+  Needs: `gh` logged in, the Atlassian MCP connected, and Claude Code (it uses
+  `AskUserQuestion` and Jira MCP tools).
