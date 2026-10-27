@@ -131,3 +131,6 @@ Docs: [agents.md](https://agents.md)
 - **walk-me-through** — paced, conversational walkthrough of a pasted source (URL, text,
   or file), explained concept-by-concept in plain language, with optional related-topic
   tangents along the way.
+- **ship-feature** — manual-only. Commits by context and Jira ticket, pushes, opens a PR from
+  the repo template, syncs a `-release` twin branch via cherry-pick, and moves the ticket
+  to a testing status.

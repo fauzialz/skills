@@ -12,6 +12,7 @@
     "productivity"
   ],
   "skills": [
-    "./skills/walk-me-through"
+    "./skills/walk-me-through",
+    "./skills/ship-feature"
   ]
 }
