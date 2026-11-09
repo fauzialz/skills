@@ -96,7 +96,17 @@ release branch.
    user.
 4. Report the path taken (e.g. "To Do -> In Progress -> Ready to test").
 
+## 6. Notify (optional)
+
+Ask the user: "Notify someone (QA/PM) when the build is done?"
+
+- No: skip.
+- Yes: ask for the GitHub Actions run URL and who to message. Then follow the
+  `notify-build-done` skill, passing along the ticket keys already known from step 1.
+  Do not wait for the build here unless the user said yes.
+
 ## Final report
 
 End with a short list: commits made, branch pushed, PR URL, twin branch and picked
-commits, ticket status path. Keep it to a few lines.
+commits, ticket status path, and whether a build notification was set up. Keep it to a few
+lines.
