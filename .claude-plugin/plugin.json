@@ -13,6 +13,8 @@
   ],
   "skills": [
     "./skills/walk-me-through",
-    "./skills/ship-feature"
+    "./skills/ship-feature",
+    "./skills/ship-code",
+    "./skills/notify-build-done"
   ]
 }

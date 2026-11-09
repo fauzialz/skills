@@ -18,6 +18,12 @@ Plugin (recommended — tracks updates to this repo):
 /plugin install fauzialz-skills
 ```
 
+One step (Claude Code 2.1.275 or later):
+
+```
+/plugin install fauzialz-skills --marketplace fauzialz/skills
+```
+
 No-plugin route: copy a skill folder straight in.
 
 ```
@@ -138,6 +144,15 @@ Docs: [agents.md](https://agents.md)
     short and plain for easy reading
   - keeps a `<feature>-release` twin branch in sync by cherry-picking the feature's commits,
     so the feature can ship alone with one PR
+  - moves the Jira ticket to a testing status, walking through intermediate statuses if needed
+
+  Needs: `gh` logged in, the Atlassian MCP connected, and Claude Code (it uses
+  `AskUserQuestion` and Jira MCP tools).
+- **ship-code** — manual-only (`/ship-code`). Same as ship-feature, without the twin
+  branch step: takes finished code work to ready-to-test in one pass:
+  - commits uncommitted changes, grouped by context and Jira ticket, in the repo's commit style
+  - pushes, then opens a PR from the repo's PR template with the ticket link, written
+    short and plain for easy reading
   - moves the Jira ticket to a testing status, walking through intermediate statuses if needed
 
   Needs: `gh` logged in, the Atlassian MCP connected, and Claude Code (it uses
