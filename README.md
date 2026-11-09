@@ -157,3 +157,17 @@ Docs: [agents.md](https://agents.md)
 
   Needs: `gh` logged in, the Atlassian MCP connected, and Claude Code (it uses
   `AskUserQuestion` and Jira MCP tools).
+
+## Privacy
+
+This plugin is plain markdown instructions. It has no server, no telemetry, and stores nothing.
+
+- It reads data only through tools you already have connected: `git`, the GitHub CLI (`gh`),
+  the Atlassian (Jira) MCP, and the Slack MCP. That can include names and emails, for
+  example a Slack user lookup, Jira ticket details, or commit author info.
+- That data is read in your session only. It is never stored by this plugin or sent to any
+  other service.
+- `walk-me-through` fetches only the URL or file you give it.
+- No credentials are requested or kept. The skills use your own logins.
+
+Questions: open an issue at https://github.com/fauzialz/skills/issues.
